@@ -1,7 +1,7 @@
 package com.ems.model;
 
 import java.sql.Date;
-import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,13 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.ems.model.Course;
-import com.ems.model.Projects;
 
 @Entity
 @Table(name = "employee")
@@ -23,94 +18,109 @@ public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@Column(name = "empID")
+	private long empID;
 
-	@Column(name="uid", nullable = false, unique=true)
-	private long uid;
+	@Column(name = "EmpUID")
+	private String empUID;
 
-	@Column(name = "email")
+	@Column(name = "FirstName")
+	private String F_Name;
+
+	@Column(name = "MiddleName")
+	private String M_Name;
+
+	@Column(name = "LastName")
+	private String L_Name;
+
+	@Column(name = "Email")
 	private String email;
 
-	@Column(name = "firstname")
-	private String firstname; 
-
-	@Column(name = "lastname")
-	private String lastname;
-
-	@Column(name="middlename")
-	private String middlename;
-
-	@Column(name = "password")
+	@Column(name = "Password")
 	private String password;
 
-	@Column(name = "active")
-	private boolean active;
+	@Column(name = "EmpAddr")
+	private String addr;
 
-	@Column(name="gender", nullable = false)
-	private String gender;
+	@Column(name = "Phno")
+	private String phno;
 
-	@Column(name="maritalstatus")
-	private String maritalStatus;
-
-	@Column(name="nationality", nullable = false)
-	private String nationality;
-
-	@Column(name="bldgrp")
-	private String bldGrp;
-
-	@Column(name="passportNo")
-	private long passportNo;
-
-	@Column(name="joiningDate", nullable = false)
-	private Date joiningDate;
-
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="emp_role", joinColumns=@JoinColumn(name="uid"), inverseJoinColumns=@JoinColumn(name="role_id"))
-	private Set<Role> role;
-
-	@Column(name="address")
-	private String  address;
-
-	@Column(name="phno", nullable = false)
-	private long phno;
-
-	@Column(name="bankId")
-	private long bankId;
-
-	@Column(name="designation")
+	@Column(name = "Designation")
 	private String designation;
 
-	@Column(name="managerUid")
-	private long managerUid;
+	@Column(name = "Gender")
+	private char gender;
 
-	@Column(name="experience")
-	private float empExp;
+	@Column(name = "Nationality")
+	private String nationality;
 
-	@Column(name="empResgDdate")
-	private Date empResgDdate;
+	@Column(name = "JoiningDate")
+	private Date joiningDate;
 
-	@Column(name="isManager")
-	private boolean isManager;
+	@Column(name = "AddedBy")
+	private long addedBy;
 
-	@Column(name="isHR")
-	private boolean isHR;
+	@Column(name = "IsActive")
+	private short isActive;
 
+	@Column(name = "ManagerId")
+	private long managerId;
 
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="emp_course", joinColumns=@JoinColumn(name="uid"), inverseJoinColumns=@JoinColumn(name="course_id"))
-	private Set<Course> course;
+	@Column(name = "BloodGroup")
+	private String bloodGroup;
 
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinTable(name="emp_project", joinColumns=@JoinColumn(name="uid"), inverseJoinColumns = @JoinColumn(name="prj_id"))
-	private Projects project;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "roleId")
+	private Role role;
 
+	@Column(name = "BankId")
+	private long bankId;
 
-	public int getId() {
-		return id;
+	@Column(name = "ResignationDate")
+	private Date resignationDate;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "projectUid")
+	private Projects projects;
+
+	public long getEmpID() {
+		return empID;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setEmpID(long empID) {
+		this.empID = empID;
+	}
+
+	public String getEmpUID() {
+		return empUID;
+	}
+
+	public void setEmpUID(String empUID) {
+		this.empUID = empUID;
+	}
+
+	public String getF_Name() {
+		return F_Name;
+	}
+
+	public void setF_Name(String f_Name) {
+		F_Name = f_Name;
+	}
+
+	public String getM_Name() {
+		return M_Name;
+	}
+
+	public void setM_Name(String m_Name) {
+		M_Name = m_Name;
+	}
+
+	public String getL_Name() {
+		return L_Name;
+	}
+
+	public void setL_Name(String l_Name) {
+		L_Name = l_Name;
 	}
 
 	public String getEmail() {
@@ -121,22 +131,6 @@ public class Employee {
 		this.email = email;
 	}
 
-	public String getFirstname() {
-		return firstname;
-	}
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -145,116 +139,20 @@ public class Employee {
 		this.password = password;
 	}
 
-	public boolean getActive() {
-		return active;
+	public String getAddr() {
+		return addr;
 	}
 
-	public void setActive(boolean active) {
-		this.active = active;
+	public void setAddr(String addr) {
+		this.addr = addr;
 	}
 
-	public Set<Role> getRoles() {
-		return role;
-	}
-
-	public void setRoles(Set<Role> roles) {
-		this.role = roles;
-	}
-
-	public long getUid() {
-		return uid;
-	}
-
-	public void setUid(long uid) {
-		this.uid = uid;
-	}
-
-	public String getMiddlename() {
-		return middlename;
-	}
-
-	public void setMiddlename(String middlename) {
-		this.middlename = middlename;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getMaritalStatus() {
-		return maritalStatus;
-	}
-
-	public void setMaritalStatus(String maritalStatus) {
-		this.maritalStatus = maritalStatus;
-	}
-
-	public String getNationality() {
-		return nationality;
-	}
-
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
-	}
-
-	public String getBldGrp() {
-		return bldGrp;
-	}
-
-	public void setBldGrp(String bldGrp) {
-		this.bldGrp = bldGrp;
-	}
-
-	public long getPassportNo() {
-		return passportNo;
-	}
-
-	public void setPassportNo(long passportNo) {
-		this.passportNo = passportNo;
-	}
-
-	public Date getJoiningDate() {
-		return joiningDate;
-	}
-
-	public void setJoiningDate(Date joiningDate) {
-		this.joiningDate = joiningDate;
-	}
-
-	public Set<Role> getRole() {
-		return role;
-	}
-
-	public void setRole(Set<Role> role) {
-		this.role = role;
-	}
-
-	public String getAddrId() {
-		return address;
-	}
-
-	public void setAddrId(String address) {
-		this.address = address;
-	}
-
-	public long getPhno() {
+	public String getPhno() {
 		return phno;
 	}
 
-	public void setPhno(long phno) {
+	public void setPhno(String phno) {
 		this.phno = phno;
-	}
-
-	public long getBankId() {
-		return bankId;
-	}
-
-	public void setBankId(long bankId) {
-		this.bankId = bankId;
 	}
 
 	public String getDesignation() {
@@ -265,60 +163,84 @@ public class Employee {
 		this.designation = designation;
 	}
 
-	public long getManagerUid() {
-		return managerUid;
+	public char getGender() {
+		return gender;
 	}
 
-	public void setManagerUid(long managerUid) {
-		this.managerUid = managerUid;
+	public void setGender(char gender) {
+		this.gender = gender;
 	}
 
-	public float getEmpExp() {
-		return empExp;
+	public String getNationality() {
+		return nationality;
 	}
 
-	public void setEmpExp(float empExp) {
-		this.empExp = empExp;
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
 	}
 
-	public Date getEmpResgDdate() {
-		return empResgDdate;
+	public Date getJoiningDate() {
+		return joiningDate;
 	}
 
-	public void setEmpResgDdate(Date empResgDdate) {
-		this.empResgDdate = empResgDdate;
+	public void setJoiningDate(Date joiningDate) {
+		this.joiningDate = joiningDate;
 	}
 
-	public boolean isManager() {
-		return isManager;
+	public long getAddedBy() {
+		return addedBy;
 	}
 
-	public void setManager(boolean isManager) {
-		this.isManager = isManager;
+	public void setAddedBy(long addedBy) {
+		this.addedBy = addedBy;
 	}
 
-	public boolean isHR() {
-		return isHR;
+	public short getIsActive() {
+		return isActive;
 	}
 
-	public void setHR(boolean isHR) {
-		this.isHR = isHR;
+	public void setIsActive(short isActive) {
+		this.isActive = isActive;
 	}
 
-	public Set<Course> getCourse() {
-		return course;
+	public long getManagerId() {
+		return managerId;
 	}
 
-	public void setCourse(Set<Course> course) {
-		this.course = course;
+	public void setManagerId(long managerId) {
+		this.managerId = managerId;
 	}
 
-	public Projects getProject() {
-		return project;
+	public String getBloodGroup() {
+		return bloodGroup;
 	}
 
-	public void setProject(Projects project) {
-		this.project = project;
+	public void setBloodGroup(String bloodGroup) {
+		this.bloodGroup = bloodGroup;
 	}
 
+	public Role getRoles() {
+		return role;
+	}
+
+	public void setRoles(Role role) {
+		this.role = role;
+	}
+
+	public long getBankId() {
+		return bankId;
+	}
+
+	public void setBankId(long bankId) {
+		this.bankId = bankId;
+	}
+
+	public Date getResignationDate() {
+		return resignationDate;
+	}
+
+	public void setResignationDate(Date resignationDate) {
+		this.resignationDate = resignationDate;
+	}
+	
 }

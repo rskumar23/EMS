@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -9,15 +12,14 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
 	
-	
-	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
 
 </script>
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<link
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <link href="css/font-awesome.css" rel="stylesheet">
@@ -41,8 +43,8 @@ width:60%;
 </head>
 <body>
 	<div id="wrapper">
-		<%@include file="fragment/header.jsp"%>
-		<%@include file="fragment/sidebar.jsp"%>
+		<%@include file="fragments/header.jsp"%>
+		<%@include file="fragments/sidebar.jsp"%>
 		<div id="page-wrapper">
 			<div class="graphs">
 				<div class="xs">
@@ -52,22 +54,31 @@ width:60%;
 							<div class="tab-content">
 								<div class="tab-pane active" id="horizontal-form">
 									<div class="panel panel-primary">
-										<div class="panel-heading">Degree</div>
+										<div class="panel-heading">
+											<c:out value="${degree.id != null ? 'Update' : 'Add' }" />
+											Degree
+										</div>
 										<div class="panel-body">
 											<div class="col-sm-10">
-												<form class="form-horizontal">
+												<form class="form-horizontal" action="addDegree"
+													method="post">
+													<div>
+														<input type="hidden" value="${degree.id}" name="id">
+													</div>
 													<div class="form-group">
 														<label for="focusedinput" class="control-label col-sm-4">Degree
 															Name: </label>
 														<div class="col-sm-8">
 															<input type="text" class="form-control col-sm-10"
-																name="txtDegreeName" placeholder="Degree Name" required>
+																value="${degree.degreeName}" name="degreeName"
+																placeholder="Degree Name" required>
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-2"></div>
 														<div class="col-sm-4">
-															<input type="submit" class="btn btn-primary" value="Save"
+															<input type="submit" class="btn btn-primary"
+																value="<c:out value="${degree.id != null ? 'Update' : 'Save' }" />"
 																name="btnSave">
 														</div>
 														<div class="col-sm-4">
@@ -94,7 +105,7 @@ width:60%;
 			</div>
 			<!--Graphs-->
 		</div>
-		<%@include file="fragment/footer.jsp"%>
+		<%@include file="fragments/footer.jsp"%>
 	</div>
 	</div>
 	<!-- /#page-wrapper -->

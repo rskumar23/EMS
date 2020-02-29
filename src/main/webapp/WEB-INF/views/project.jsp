@@ -22,6 +22,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- jQuery -->
 <script src="js/jquery.min.js"></script>
 <!----webfonts--->
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'
 	rel='stylesheet' type='text/css'>
@@ -41,8 +43,8 @@ width:60%;
 </head>
 <body>
 	<div id="wrapper">
-		<%@include file="fragment/header.jsp"%>
-		<%@include file="fragment/sidebar.jsp"%>
+		<%@include file="fragments/header.jsp"%>
+		<%@include file="fragments/sidebar.jsp"%>
 		<div id="page-wrapper">
 			<div class="graphs">
 				<div class="xs">
@@ -152,7 +154,7 @@ width:60%;
 			</div>
 			<!--Graphs-->
 		</div>
-		<%@include file="fragment/footer.jsp"%>
+		<%@include file="fragments/footer.jsp"%>
 	</div>
 	</div>
 	<!-- /#page-wrapper -->

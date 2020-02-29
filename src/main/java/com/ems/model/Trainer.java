@@ -15,8 +15,8 @@ public class Trainer {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="trainerName")
-	private String trainerName;
+	@Column(name="name")
+	private String name;
 	
 	@Column(name="phno")
 	private long phno;
@@ -35,12 +35,12 @@ public class Trainer {
 		this.id = id;
 	}
 
-	public String getTrainerName() {
-		return trainerName;
+	public String getName() {
+		return name;
 	}
 
-	public void setTrainerName(String trainerName) {
-		this.trainerName = trainerName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public long getPhno() {

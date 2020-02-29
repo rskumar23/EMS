@@ -1,4 +1,4 @@
-package com.ems.model;
+/*package com.ems.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,11 +16,11 @@ public class Countries {
 	@Column(name="id", nullable = false, unique=true)
 	private long id;
 	
-	@Column(name="cntryName", nullable = false, unique=true)
-	private String cntryName;
+	@Column(name="name", nullable = false, unique=true)
+	private String name;
 	
-	@Column(name="cntryISO", nullable = false, unique=true)
-	private String cntryISO;
+	@Column(name="iso", nullable = false, unique=true)
+	private String iso;
 
 	public long getId() {
 		return id;
@@ -30,21 +30,22 @@ public class Countries {
 		this.id = id;
 	}
 
-	public String getCntryName() {
-		return cntryName;
+	public String getName() {
+		return name;
 	}
 
-	public void setCntryName(String cntryName) {
-		this.cntryName = cntryName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getCntryISO() {
-		return cntryISO;
+	public String getIso() {
+		return iso;
 	}
 
-	public void setCntryISO(String cntryISO) {
-		this.cntryISO = cntryISO;
+	public void setIso(String iso) {
+		this.iso = iso;
 	}
-	
+
 	
 }
+*/

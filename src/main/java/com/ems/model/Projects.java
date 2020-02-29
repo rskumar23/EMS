@@ -1,6 +1,7 @@
 package com.ems.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,9 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -20,32 +19,27 @@ public class Projects {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="prj_id", nullable = false, unique=true)
+	
 	private long id;
 	
-	@Column(name="prjwon", nullable = false, unique=true)
-	private long won;
+	@Column(name="projectUid", nullable = false, unique=true)
+	private long projectUid;
 	
-	@Column(name="prjName")
-	private String prjName;
+	private String name;
 	
-	@Column(name="prjSatrtDate")
-	private Date prjSatrtDate;
+	private Date startDate;
 	
-	@Column(name="prjEndDate")
-	private Date prjEndDate;
+	private Date endDate;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinTable(name="emp_project", joinColumns=@JoinColumn(name="won"), inverseJoinColumns=@JoinColumn(name="uid"))
-	private Employee employee;
+	private float duration;
 	
-	@Column(name="clientName")
+	@OneToMany(mappedBy = "projects")
+	private List<Employee> employee;
+	
 	private String clientName;
 	
-	@Column(name="prjDomain")
-	private String prjDomain;
+	private String projectDomain;
 	
-	@Column(name="status")
 	private String status;
 
 	public long getId() {
@@ -56,43 +50,60 @@ public class Projects {
 		this.id = id;
 	}
 
-	public long getWon() {
-		return won;
+	
+	public long getProjectUid() {
+		return projectUid;
 	}
 
-	public void setWon(long won) {
-		this.won = won;
+	public void setProjectUid(long projectUid) {
+		this.projectUid = projectUid;
 	}
 
-	public String getPrjName() {
-		return prjName;
+	public String getProjectDomain() {
+		return projectDomain;
 	}
 
-	public void setPrjName(String prjName) {
-		this.prjName = prjName;
+	public void setProjectDomain(String projectDomain) {
+		this.projectDomain = projectDomain;
 	}
 
-	public Date getPrjSatrtDate() {
-		return prjSatrtDate;
+	public String getName() {
+		return name;
 	}
 
-	public void setPrjSatrtDate(Date prjSatrtDate) {
-		this.prjSatrtDate = prjSatrtDate;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Date getPrjEndDate() {
-		return prjEndDate;
+	public Date getStartDate() {
+		return startDate;
 	}
 
-	public void setPrjEndDate(Date prjEndDate) {
-		this.prjEndDate = prjEndDate;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
-	public Employee getEmployee() {
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public float getDuration() {
+		return duration;
+	}
+
+	public void setDuration(float duration) {
+		this.duration = duration;
+	}
+
+	public List<Employee> getEmployee() {
 		return employee;
 	}
 
-	public void setEmployee(Employee employee) {
+	public void setEmployee(List<Employee> employee) {
 		this.employee = employee;
 	}
 
@@ -104,13 +115,7 @@ public class Projects {
 		this.clientName = clientName;
 	}
 
-	public String getPrjDomain() {
-		return prjDomain;
-	}
-
-	public void setPrjDomain(String prjDomain) {
-		this.prjDomain = prjDomain;
-	}
+	
 
 	public String getStatus() {
 		return status;
@@ -119,6 +124,8 @@ public class Projects {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	
 
 	
 	

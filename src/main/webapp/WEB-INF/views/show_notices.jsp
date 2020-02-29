@@ -12,8 +12,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 </script>
 <!-- Bootstrap Core CSS -->
-
-
 <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -26,8 +24,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" ></script>
 <script>
 $(document).ready(function(){
-    $('#courseTable').dataTable();
+    $('#noriceTable').dataTable();
 });
+/* $(document).on("click",".updateBtn",function(){
+	var noticeId = $(this).data("update-id");
+	alert(noticeId);
+	$.ajax({
+		url:"/updateNotice",
+		data:{'noticeId':noticeId},
+		success:function(data){
+			alert(data);
+		}
+	})
+	
+}) */
 </script>
 <style>
 /*#horizontal-form{
@@ -48,35 +58,29 @@ width:60%;
 					<div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
 							<div class="panel panel-primary">
-								<div class="panel-heading" style="align-self: center;">Course Details</div>
+								<div class="panel-heading" style="align-self: center;">Notice Details</div>
 								<div class="panel-body">
-									<table id="courseTable" class="table table-bordered table-striped">
+								<!-- <label>Search Employee </label><input type="text" value="srchEmpUid"> -->
+									<table id="noriceTable" class="table table-bordered table-striped">
 										<thead>
 											<tr>
 												<th scope="col">Sr no</th>
-												<th scope="col">Course UID</th>
-												<th scope="col">Name</th>
-												<th scope="col">Category</th>
-												<th scope="col">Type</th>
-												<th scope="col">Start Date</th>
-												<th scope="col">End Date</th>
-												<th scope="col">Trainer</th>
-												<th scope="col">Action</th>
+												<th scope="col">Title</th>
+												<th scope="col">Description</th>
+												<th scope="col">Receivers</th>
+												<th scope="col">Actions</th>
 											</tr>
 										</thead>
 										<tbody><% int i=1; %>
-										<c:forEach var="courses" items="${courses}">
+										<c:forEach var="notices" varStatus="status=1" items="${notices}">
 											<tr>
 												<td><% out.print(i++);%></td>
-												<td>${courses.crsUid}</td>
-												<td>${courses.name}</td>
-												<td>${courses.category}</td>
-												<td>${courses.type}</td>
-												<td>${courses.strtDate}</td>
-												<td>${courses.endDate}</td>
-												<td>${courses.trainerUid}</td>
-												<td><a class="btn btn-primary" href="/updateCourse?courseId=${courses.id}">Update</a> <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button> </td>
+												<td>${notices.noticeTitle}</td>
+												<td>${notices.noticeDescription}</td>
+												<td>${notices.receivers}</td>
+												<td><a class="btn btn-primary" href="/updateNotice?noticeId=${notices.id}"> Update </a>  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button></td>
 											</tr>
+											
 											<!-- Model -->
 											
 											<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -89,17 +93,17 @@ width:60%;
 										        </button>
 										      </div>
 										      <div class="modal-body">
-										        Do you really want to delete the course having Course UID "${courses.crsUid}"? 
+										        Do you really want to delete Notice "${notices.noticeTitle}"? 
 										      </div>
 										      <div class="modal-footer">
 										        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-										        <a class="btn btn-danger" href="/deleteCourse?courseId=${courses.id}"> Yes </a>
+										        <a class="btn btn-danger" href="/deleteNotice?noticeId=${notices.id}"> Yes </a>
 										        
 										      </div>
 										    </div>
 										  </div>
 										</div>
-											
+										<!-- Model End -->
 											</c:forEach>
 										</tbody>
 									</table>

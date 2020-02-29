@@ -14,26 +14,28 @@ public class Degree {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="dgrId", nullable = false, unique=true)
-	private long id;
+	private Long id;
 	
-	@Column(name="dgrName")
-	private String dgrName;
+	@Column(name="degreeName")
+	private String degreeName;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getDgrName() {
-		return dgrName;
+	public String getDegreeName() {
+		return degreeName;
 	}
 
-	public void setDgrName(String dgrName) {
-		this.dgrName = dgrName;
+	public void setDegreeName(String degreeName) {
+		this.degreeName = degreeName;
 	}
+
+	
 
 	
 	

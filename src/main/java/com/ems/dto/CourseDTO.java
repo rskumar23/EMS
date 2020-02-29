@@ -1,42 +1,45 @@
-package com.ems.model;
-
-import java.sql.Date;
+package com.ems.dto;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="course")
-public class Course {
+import com.ems.model.Course;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+import ch.qos.logback.core.CoreConstants;
+
+public class CourseDTO {
+	
 	private Long Id;
 	
-	@Column(name="crsUid", nullable = false, unique=true)
 	private long crsUid;
 	
-	@Column(name="name")
 	private String name;
 	
-	@Column(name="category")
 	private String category;
 	
-	@Column(name="strtDate")
 	private String strtDate;
 	
-	@Column(name="endDate")
 	private String endDate;
 	
-	@Column(name="trainerUid")
 	private long trainerUid;
 	
-	@Column(name="type")
 	private String type;
+	
+	 public CourseDTO() {
+		
+	}
+	 
+	 public CourseDTO(Course course) {
+		 
+		 this.Id = course.getId();
+		 this.category = course.getCategory();
+		 this.crsUid = course.getCrsUid();
+		 this.name = course.getName();
+		 this.strtDate = course.getStrtDate();
+		 this.endDate = course.getEndDate();
+		 this.trainerUid = course.getTrainerUid();
+		 this.type = course.getType();
+		 
+	 }
 
 	public Long getId() {
 		return Id;
@@ -101,5 +104,6 @@ public class Course {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+	 
+
 }

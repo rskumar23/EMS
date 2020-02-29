@@ -13,6 +13,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <!-- Custom CSS -->
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <link href="css/font-awesome.css" rel="stylesheet">
 <!-- jQuery -->
@@ -39,8 +41,8 @@ width:60%;
 </head>
 <body>
 	<div id="wrapper">
-		<%@include file="fragment/header.jsp"%>
-		<%@include file="fragment/sidebar.jsp"%>
+		<%@include file="fragments/header.jsp"%>
+		<%@include file="fragments/sidebar.jsp"%>
 		<div id="page-wrapper">
 			<div class="graphs">
 				<div class="xs">
@@ -53,13 +55,13 @@ width:60%;
 										<div class="panel-body">
 											<div class="row">
 												<div class="col-sm-10">
-													<form class="form-horizontal">
+													<form class="form-horizontal" action="addRoles" method="post">
 														<div class="form-group">
 															<label for="focusedinput" class="control-label col-sm-4">Name:
 															</label>
 															<div class="col-sm-8">
 																<input type="text" class="form-control col-sm-10"
-																	name="" placeholder="Roles Name" required>
+																	name="roles" placeholder="Role Name" required>
 															</div>
 														</div>
 														<div class="form-group">
@@ -122,7 +124,7 @@ width:60%;
 		</div>
 		<!--Graphs-->
 	</div>
-	<%@include file="fragment/footer.jsp"%>
+	<%@include file="fragments/footer.jsp"%>
 	</div>
 	</div>
 	<!-- /#page-wrapper -->

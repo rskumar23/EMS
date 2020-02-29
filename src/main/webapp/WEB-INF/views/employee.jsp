@@ -28,6 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!---//webfonts--->
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
+
 <style>
 /*#horizontal-form{
 width:60%;
@@ -50,8 +51,7 @@ width:60%;
 								<div class="panel-heading">Employee</div>
 								<div class="panel-body">
 									<div class="col-sm-10">
-										<form class="form-horizontal" action="saveEmployee"
-											method="post">
+										<form class="form-horizontal" action="saveEmployee" method="post">
 											<div class="form-group">
 												<label for="focusedinput" class="control-label col-sm-4">Employee
 													ID</label>

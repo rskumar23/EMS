@@ -15,11 +15,11 @@ public class TimeSheet {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ts_id", nullable = false, unique=true)
-	private long ts_id;
+	@Column(name="id", nullable = false, unique=true)
+	private long id;
 	
 	@Column(name="ts_date")
-	private Date ts_date;
+	private Date date;
 	
 	@Column(name="hrs")
 	private int hrs;
@@ -27,20 +27,22 @@ public class TimeSheet {
 	@Column(name="uid")
 	private long uid;
 
-	public long getTs_id() {
-		return ts_id;
+	
+
+	public long getId() {
+		return id;
 	}
 
-	public void setTs_id(long ts_id) {
-		this.ts_id = ts_id;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public Date getTs_date() {
-		return ts_date;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setTs_date(Date ts_date) {
-		this.ts_date = ts_date;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public int getHrs() {

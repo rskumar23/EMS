@@ -8,6 +8,8 @@
  <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <!-- Custom CSS -->
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <link href="css/calendar.css" rel="stylesheet" type='text/css'>
 <link href="css/font-awesome.css" rel="stylesheet"> 

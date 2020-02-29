@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -20,8 +21,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 
-<link
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -73,16 +73,19 @@ width:60%;
 					<div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
 							<div class="panel panel-primary emp_panel">
-								<div class="panel-heading">Course</div>
+								<div class="panel-heading"><c:out value="${course.id != null ? 'Update' : 'Add' }" /> Course</div>
 								<div class="panel-body">
 									<div class="col-sm-10">
-										<form class="form-horizontal" action="addCourses">
+										<form class="form-horizontal" action="addCourses" method="post">
+											<div>
+												<input type="hidden" name="Id" value="${course.id}">
+											</div>
 											<div class="form-group">
 												<label for="focusedinput" class="control-label col-sm-4">Course
 													UID</label>
 												<div class="col-sm-8">
 													<input type="text" class="form-control col-sm-10"
-														name="crsUid" placeholder="Course UID" required>
+														value = "${course.crsUid}" name="crsUid" placeholder="Course UID" required>
 												</div>
 											</div>
 											<div class="form-group">
@@ -90,7 +93,7 @@ width:60%;
 													Name </label>
 												<div class="col-sm-8">
 													<input type="text" class="form-control col-sm-10"
-														name="crsName" placeholder="Course Name" required>
+														value="${course.name}" name="name" placeholder="Course Name" required>
 												</div>
 											</div>
 											<div class="form-group">
@@ -98,7 +101,7 @@ width:60%;
 													Category </label>
 												<div class="col-sm-8">
 													<input type="text" class="form-control col-sm-10"
-														name="crsCatg" placeholder="Course Category" required>
+														value="${course.category}" name="category" placeholder="Course Category" required>
 												</div>
 											</div>
 											<div class="form-group">
@@ -106,14 +109,14 @@ width:60%;
 													Type </label>
 												<div class="col-sm-8">
 													<input type="text" class="form-control col-sm-10"
-														name="crsType" placeholder="Course Type" required>
+														value="${course.type}" name="type" placeholder="Course Type" required>
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="focusedinput" class="control-label col-sm-4">Trainer</label>
 												<div class="col-sm-8">
 													<input type="text" class="form-control col-sm-10"
-														name="trainerUid" placeholder="Trainer UID" required>
+														value="${course.trainerUid}" name="trainerUid" placeholder="Trainer UID" required>
 												</div>
 											</div>
 											<div class="form-group">
@@ -121,7 +124,7 @@ width:60%;
 													Start Date</label>
 												<div class="col-sm-8">
 													<input type="text" class="form-control col-sm-10"
-														name="strtDate" placeholder="MM/DD/YYYY" required>
+														value="${course.strtDate}" name="strtDate" placeholder="MM/DD/YYYY" required>
 												</div>
 											</div>
 											<div class="form-group">
@@ -129,14 +132,13 @@ width:60%;
 													End Date</label>
 												<div class="col-sm-8 ">
 													<input type="text" class="form-control col-sm-10"
-														name="endDate" placeholder="MM/DD/YYYY" required>
+														value="${course.endDate}" name="endDate" placeholder="MM/DD/YYYY" required>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-2"></div>
 												<div class="col-sm-4">
-													<input type="submit" class="btn btn-primary" value="Save"
-														name="btnSave">
+													<input type="submit" class="btn btn-primary" value="<c:out value="${course.id != null ? 'Update' : 'Save' }" />">
 												</div>
 												<div class="col-sm-4">
 													<input type="Reset" class="btn btn-primary" name="reset">

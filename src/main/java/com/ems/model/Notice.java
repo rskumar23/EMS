@@ -1,45 +1,49 @@
 package com.ems.model;
 
-import java.util.List;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
 @Table(name="notice")
 public class Notice {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
-	private long noticeId;
+	private Long Id;
 	
-	@Column(name="noticeTitle")
 	private String noticeTitle;
 	
-	@Column(name="noticeDecs")
-	private String noticeDecs;
+	private String noticeDescription;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	private String receivers;
+	
+	/*@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="emp_notice", joinColumns=@JoinColumn(name="id"), inverseJoinColumns=@JoinColumn(name="uid"))
-	private List <Employee> employee;
+	private List <Employee> employee;*/
 
-	public long getNoticeId() {
-		return noticeId;
+	
+
+	@Override
+	public String toString() {
+		return "Notice [Id=" + Id + ", noticeTitle=" + noticeTitle + ", noticeDescription=" + noticeDescription + ", receivers="
+				+ receivers + "]";
 	}
 
-	public void setNoticeId(long noticeId) {
-		this.noticeId = noticeId;
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
 	}
 
 	public String getNoticeTitle() {
@@ -50,25 +54,24 @@ public class Notice {
 		this.noticeTitle = noticeTitle;
 	}
 
-	public String getNoticeDecs() {
-		return noticeDecs;
+	public String getNoticeDescription() {
+		return noticeDescription;
 	}
 
-	public void setNoticeDecs(String noticeDecs) {
-		this.noticeDecs = noticeDecs;
+	public void setNoticeDescription(String noticeDescription) {
+		this.noticeDescription = noticeDescription;
 	}
 
-	public List<Employee> getEmployee() {
-		return employee;
+	public String getReceivers() {
+		return receivers;
 	}
 
-	public void setEmployee(List<Employee> employee) {
-		this.employee = employee;
+	public void setReceivers(String receivers) {
+		this.receivers = receivers;
 	}
+
 	
-	
-	
-	
+
 	
 
 }

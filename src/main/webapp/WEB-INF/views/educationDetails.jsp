@@ -28,14 +28,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!---//webfonts--->
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
 </head>
 <body>
 	<div id="wrapper">
-		<%@include file="fragment/header.jsp"%>
-		<%@include file="fragment/sidebar.jsp"%>
+		<%@include file="fragments/header.jsp"%>
+		<%@include file="fragments/sidebar.jsp"%>
 		<div id="page-wrapper">
 			<div class="graphs">
 				<div class="xs">
@@ -144,7 +146,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<!--Graphs-->
 		</div>
-		<%@include file="fragment/footer.jsp"%>
+		<%@include file="fragments/footer.jsp"%>
 	</div>
 	</div>
 	<!-- /#page-wrapper -->

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -13,7 +14,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript">
 	
 	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 
 
 </script>
@@ -56,44 +61,49 @@ width:60%;
 					<div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
 							<div class="panel panel-primary emp_panel">
-								<div class="panel-heading">Notices</div>
+								<div class="panel-heading"><c:out value="${notice.id != null ? 'Update' : 'Add' }" /> Notices</div>
 								<div class="panel-body">
 									<div class="col-sm-10">
-										<form class="form-horizontal" action="addCourses">
-											
+										<form class="form-horizontal" action="addNotice" method="post">
+											<div>
+												<input type="hidden" value="${notice.id}" name="Id">
+											</div>
 											<div class="form-group">
-												<label for="focusedinput" class="control-label col-sm-4">Notice Title </label>
+												<label for="focusedinput" class="control-label col-sm-4">Notice
+													Title </label>
 												<div class="col-sm-8">
 													<input type="text" class="form-control col-sm-10"
-														name="noticeTitle" placeholder="Notice Title" required>
+														value="${notice.noticeTitle}" name="noticeTitle"
+														placeholder="Notice Title" required>
 												</div>
 											</div>
 											<div class="form-group">
-												<label for="focusedinput" class="control-label col-sm-4">Notice 
+												<label for="focusedinput" class="control-label col-sm-4">Notice
 													Description </label>
 												<div class="col-sm-8">
-													<textarea  class="form-control col-sm-10"
-														name="noticeDecs" placeholder="Notice Description" required> </textarea>
+													<textarea class="form-control col-sm-10"
+														name="noticeDescription" placeholder="Notice Description"
+														required><c:out
+															value="${notice.noticeDescription}" /></textarea>
 												</div>
 											</div>
+
 											<div class="form-group">
-												<label for="focusedinput" class="control-label col-sm-4">Receiver</label>
+												<label for="focusedinput" class="control-label col-sm-4">Receiver
+												</label>
 												<div class="col-sm-8">
-													<select class="form-control" name="noticeReceiver">
-														<option>HR</option>
-														<option>Manager</option>
-														<option>Employee</option>
-													</select>
+													<input type="text" class="form-control col-sm-10"
+														name="receivers" value="${notice.receivers}"
+														placeholder="Notice Receiver" required>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-2"></div>
 												<div class="col-sm-4">
-													<input type="submit" class="btn btn-primary" value="Save"
-														name="btnSave">
+													 <input type="submit" class="btn btn-primary" value="<c:out value="${notice.id != null ? 'Update' : 'Save' }" />" > 
 												</div>
 												<div class="col-sm-4">
-													<input type="Reset" class="btn btn-primary" name="reset">
+													<input type="reset" class="btn btn-primary" name="reset">
 												</div>
 												<div class="col-sm-2"></div>
 											</div>
@@ -113,9 +123,6 @@ width:60%;
 			</div>
 			<%@include file="fragments/footer.jsp"%>
 		</div>
-
-		<!-- /#wrapper -->
-		<!-- Nav CSS -->
 		<link href="css/custom.css" rel="stylesheet">
 		<!-- Metis Menu Plugin JavaScript -->
 		<script src="js/metisMenu.min.js"></script>

@@ -1,4 +1,4 @@
-package com.ems.model;
+/*package com.ems.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,14 +17,14 @@ public class States {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="state_id", nullable = false, unique=true)
+	@Column(name="id", nullable = false, unique=true)
 	private long id;
 	
 	@Column(name="name", nullable = false, unique=true)
 	private String name;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinTable(name="countries_states", joinColumns=@JoinColumn(name="state_id"), inverseJoinColumns=@JoinColumn(name="cntry_id"))
+	@JoinTable(name="countries_states", joinColumns=@JoinColumn(name="id"), inverseJoinColumns=@JoinColumn(name="id"))
 	Countries country;
 
 	public long getId() {
@@ -53,3 +53,4 @@ public class States {
 	
 	
 }
+*/
